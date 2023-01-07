@@ -6,9 +6,7 @@ import { RootState } from '../store';
 import NavigationLinks from './NavigationLinks';
 
 const Topbar = () => {
-    const quantity = useSelector((state: RootState) => state.cart.quantity)
-
-    console.log(quantity);
+    const quantity = useSelector((state: RootState) => state.cart.quantity);
 
     return (
         <nav className='absolute top-0 left-0 right-0 w-full h-20 bg-transparent flex items-center justify-center'>
@@ -40,6 +38,14 @@ const Topbar = () => {
                                 <path d="M13.9999 10V5C13.9999 3.93913 13.5785 2.92172 12.8283 2.17157C12.0782 1.42143 11.0607 1 9.99988 1C8.93901 1 7.9216 1.42143 7.17145 2.17157C6.42131 2.92172 5.99988 3.93913 5.99988 5V10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </button>
+                    </Link>
+                    <Link href='/orders'>
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3" />
+                            </svg>
+
+                        </span>
                     </Link>
                 </div>
             </div>

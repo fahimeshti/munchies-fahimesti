@@ -1,15 +1,55 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '../slices/cartSlice';
+import { RootState } from '../store';
 import { TApiAllProductsResponse } from '../types';
 
 function CardComponent({ item }: { item: TApiAllProductsResponse }) {
+    const [success, setSuccess] = useState<boolean>(false)
+    const [error, setError] = useState<boolean>(false)
     const dispatch = useDispatch();
+    const products = useSelector((state: RootState) => state.cart.products);
+
+
+    const clickHandler = () => {
+        dispatch(addProduct({ ...item, quantity: 1 }))
+        setSuccess(true)
+        const filteredProduct = products.filter(product => product.id === item.id);
+        let maxQuantityReached = false;
+        if (filteredProduct.length > 0) {
+            maxQuantityReached = filteredProduct[0]?.quantity === filteredProduct[0]?.quantity_available;
+        }
+        setError(maxQuantityReached)
+    }
+
+    useEffect(() => {
+        if (success) {
+            setTimeout(() => {
+                setSuccess(false)
+                setError(false)
+            }, 1500);
+        }
+    }, [success, error])
+
 
     return (
         <div className='bg-white w-[277px] rounded-ten overflow-hidden'>
+            {(success || error) &&
+                <div className={`${error ? "bg-red-500" : "bg-green"} fixed bottom-10 right-10 text-white px-4 py-3 rounded-ten`}>
+                    {error ?
+                        <span>Max item reached, please select another item</span>
+                        :
+                        <div className='flex gap-2 items-center'>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="inline w-5 h-5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Added to cart
+                        </div>
+                    }
+                </div>
+            }
             <figure>
                 <picture className='block w-full h-64 relative object-contain'>
                     <Image
@@ -44,7 +84,7 @@ function CardComponent({ item }: { item: TApiAllProductsResponse }) {
 
                         <div>
                             <button
-                                onClick={() => dispatch(addProduct({ ...item, quantity: 1 }))}
+                                onClick={clickHandler}
                                 className='bg-yellow p-1 rounded-[5px] hover:scale-110 transition duration-150 active:scale-125'
                             >
                                 <svg className='w-3 h-3' viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -5,6 +5,7 @@ const initialState: CartState = {
   products: [],
   quantity: 0,
   total: 0,
+  totalVat: 0,
 }
 
 const cartSlice = createSlice({
@@ -19,17 +20,23 @@ const cartSlice = createSlice({
       let updatedItems;
       if (existingCartItem) {
         updatedItems = [...state.products]
+        let newQuantity = Number(existingCartItem.quantity)
+        if (existingCartItem.quantity! < action.payload.quantity_available) {
+          newQuantity += Number(action.payload.quantity);
+        }
+
         updatedItems[existingCartItemIndex] = {
           ...existingCartItem,
-          quantity: Number(existingCartItem.quantity) + Number(action.payload.quantity)
+          quantity: newQuantity
         }
 
       } else {
         updatedItems = state.products.concat(action.payload)
       }
 
-      state.products = updatedItems
+      state.products = updatedItems;
       state.total += action.payload.price * action.payload.quantity;
+      state.totalVat += action.payload.vat
       state.quantity += 1;
     },
     updatePost(state) {

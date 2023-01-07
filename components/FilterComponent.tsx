@@ -7,7 +7,7 @@ import FilterDropdown from './FilterDropdown';
 
 const filterOptions = ['Button', 'Free delivary', 'New', 'coming'];
 
-function FilterComponent({ data }: { data: TApiAllProductsResponse[] }) {
+function FilterComponent({ products }: { products: TApiAllProductsResponse[] }) {
 
     let active = true;
     return (
@@ -24,7 +24,7 @@ function FilterComponent({ data }: { data: TApiAllProductsResponse[] }) {
                         {
                             filterOptions.map((item, idx) => (
                                 <button
-                                    className={`${false ? "bg-yellow text-black font-semibold" : "bg-white text-pureGray"} px-10 py-3 border border-yellow last:rounded-r-ten border-r-0 last:border-r border-b hover:bg-yellow hover:text-black transition duration-150`}
+                                    className={`${!active ? "bg-yellow text-black font-semibold" : "bg-white text-pureGray"} px-10 py-3 border border-yellow last:rounded-r-ten border-r-0 last:border-r border-b hover:bg-yellow hover:text-black transition duration-150`}
                                     key={idx}
                                 >
                                     {item}
@@ -36,7 +36,7 @@ function FilterComponent({ data }: { data: TApiAllProductsResponse[] }) {
                 <FilterDropdown />
                 <section>
                     <div className='my-7 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6'>
-                        {data?.map(item => (
+                        {products?.map(item => (
                             <CardComponent key={item?.id} item={item} />
                         ))}
                     </div>

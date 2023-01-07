@@ -17,4 +17,26 @@ export type CartState = {
     products: TApiAllProductsResponse[];
     quantity: number;
     total: number;
+    totalVat: number;
+}
+
+export type UserInfo = {
+    name: string;
+    phone: number;
+    address: string;
+}
+
+export type TOrderInfo = {
+    customer: UserInfo;
+    calculation: {
+        price: number;
+        vat: number;
+        total: number;
+    };
+    items: TApiAllProductsResponse[];
+    _id: string;
+    xUser: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: string;
 }
