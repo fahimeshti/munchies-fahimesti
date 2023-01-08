@@ -16,4 +16,4 @@ Here is my munchies project that I built with the following technologies-
 4. All the orders can be seen on the `/orders` page which can be accessed from the top navigation icons.
 
 ## Visit Live Site
-It is deployed to vercel [Live link](coming soon)
+It is deployed to vercel [Live link](https://munchies-fahimesti.vercel.app/)

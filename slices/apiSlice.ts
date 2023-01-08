@@ -7,7 +7,7 @@ import type { AxiosRequestConfig, AxiosError } from 'axios'
 // base url 
 const baseURL = 'https://munchies-api.up.railway.app/';
 // setting x-access-user for all requests
-axios.defaults.headers.common['x-access-user'] = 'user2@gmail.com.com';
+axios.defaults.headers.common['x-access-user'] = 'fahimesti@gmail.com';
 
 const axiosBaseQuery = ({ baseUrl }: { baseUrl: string }): BaseQueryFn<
     {
