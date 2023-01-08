@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Heading({ children }: { children: React.ReactNode }) {
+const Heading = ({ children }: { children: React.ReactNode }): JSX.Element => {
     return (
         <h2 className='text-2xl font-medium'>{children}</h2>
     )

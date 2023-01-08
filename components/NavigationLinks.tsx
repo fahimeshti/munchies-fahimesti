@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react'
 
-function NavigationLinks() {
+const NavigationLinks = (): JSX.Element => {
     return (
         <ul className='flex flex-row items-center justify-between gap-10 text-lg font-normal font-sfPro'>
             <Link href='#'>

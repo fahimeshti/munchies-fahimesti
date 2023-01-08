@@ -6,15 +6,16 @@ import ContactComponent from '../components/ContactComponent'
 import Footer from '../components/Footer'
 import Topbar from '../components/Topbar'
 import { useGetProductsQuery } from '../slices/apiSlice'
+import { NextPage } from 'next'
 
 
-export default function Home() {
+const Home: NextPage = () => {
   const { data: products, error, isLoading } = useGetProductsQuery()
 
   return (
     <>
       <Head>
-        <title>Munchies</title>
+        <title>Munchies - by @fahimesti</title>
         <meta name="description" content="Munchies" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -22,12 +23,8 @@ export default function Home() {
       <>
         <Topbar />
         <HeroComponent />
-        {isLoading &&
-          <p className='text-center p-4'>Loading...</p>
-        }
-        {error &&
-          <p className='text-center p-2'>Something went wrong!</p>
-        }
+        {error && <p className='text-center p-2'>Something went wrong!</p>}
+        {isLoading && <p className='text-center p-4'>Loading...</p>}
         {products &&
           <FilterComponent products={products} />
         }
@@ -38,3 +35,4 @@ export default function Home() {
     </>
   )
 }
+export default Home;

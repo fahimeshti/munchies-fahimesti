@@ -6,7 +6,7 @@ import Container from '../components/Container';
 import { useGetOrdersQuery } from '../slices/apiSlice';
 
 const Orders: NextPage = () => {
-    const { data: ordersData } = useGetOrdersQuery()
+    const { data: ordersData, error, isLoading } = useGetOrdersQuery()
 
     return (
         <>
@@ -16,13 +16,13 @@ const Orders: NextPage = () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className='w-full flex items-center justify-center p-4 md:p-16'>
+            <div className='bg-gray-50 w-full min-h-screen flex justify-center p-4 md:p-8 lg:p-16'>
                 <Container>
                     <div className='p-4 md:p-0'>
                         <h1 className='text-gray-700 text-3xl font-semibold mb-4'>Orders.</h1>
                         <table className="min-w-full divide-y divide-gray-300 rounded-md overflow-hidden shadow">
                             <thead className="bg-gray-50">
-                                <tr className='uppercase border-t'>
+                                <tr className='uppercase'>
                                     <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                         <span className="sr-only">Image</span>
                                     </th>
@@ -55,13 +55,14 @@ const Orders: NextPage = () => {
                                                         src={item.image}
                                                         fill
                                                         alt={item.name}
+                                                        sizes="(max-width: 768px) 100%, (max-width: 1200px) 500px, 400px"
                                                     />
                                                 </div>
                                             </td>
                                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{item.name}</td>
                                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{orders.customer.name}</td>
                                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{item.quantity}</td>
-                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{item.price * item.quantity!}</td>
+                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">${item.price * item.quantity!}</td>
                                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                 {(new Date(orders?.createdAt))?.toLocaleDateString('pt-PT')}
                                             </td>
@@ -69,9 +70,10 @@ const Orders: NextPage = () => {
                                     ))
                                 ))}
                             </tbody>
-
-
                         </table>
+
+                        {error && <p className='text-center p-2'>Something went wrong!</p>}
+                        {isLoading && <p className='text-center p-4'>Loading...</p>}
                         {ordersData && !(ordersData?.length > 0) &&
                             <p className='w-full text-center p-4 text-gray-500'>
                                 No orders

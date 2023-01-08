@@ -1,15 +1,13 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import localFont from '@next/font/local'
-import store from '../store'
+import { store } from '../app/store'
 import { Provider } from 'react-redux'
 
-const myFont = localFont({ src: '../public/fonts/Gilroy-Medium.woff2' })
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <main className={myFont.className}>
+      <main className='font-gilroy-medium'>
         <Component {...pageProps} />
       </main>
     </Provider>

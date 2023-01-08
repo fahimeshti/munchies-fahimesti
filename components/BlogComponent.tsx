@@ -42,23 +42,24 @@ const cardData = [
     },
 ]
 
-function BlogComponent() {
+const BlogComponent = (): JSX.Element => {
     return (
-        <div className='w-full flex items-center justify-center py-24'>
+        <div className='w-full flex items-center justify-center py-6 md:py-10 lg:py-24'>
             <Container>
                 <Heading>
                     Our Blog
                 </Heading>
                 <div className='my-12'>
-                    <div className='grid grid-rows-2 grid-cols-4 grid-flow-col gap-8'>
+                    <div className='grid grid-rows-2 grid-cols-4 grid-flow-col gap-4 lg:gap-8'>
 
                         {cardData?.map((item, idx) => (
                             <div key={idx} className={`w-full rounded-ten overflow-hidden ${item.classNames}`}>
-                                <figure className={`${idx === 2 ? "h-[26rem] " : "h-[12rem]"} relative w-full object-contain`}>
+                                <figure className={`${idx === 2 ? "h-[22rem] lg:h-[26rem] " : "h-[7rem] lg:h-[12rem]"} relative w-full object-contain`}>
                                     <Image
                                         src={item.img}
                                         fill
                                         alt={'blog image'}
+                                        sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%, 100%"
                                     />
                                 </figure>
                                 <figcaption className='text-black p-4 space-y-2'>

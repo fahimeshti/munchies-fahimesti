@@ -6,13 +6,13 @@ import Button from '../components/Button';
 import CartItem from '../components/CartItem';
 import Container from '../components/Container';
 import Popup from '../components/Popup';
-import { RootState } from '../store';
+import { RootState } from '../app/store';
 import { UserInfo } from '../types';
 import { useAddOrderMutation } from '../slices/apiSlice';
 
 const Cart: NextPage = () => {
     const [togglePopupState, setTogglePopupState] = useState(false);
-    const [addOrder, result] = useAddOrderMutation()
+    const [addOrder, result] = useAddOrderMutation();
     const cart = useSelector((state: RootState) => state.cart);
     const products = cart.products;
     const currencyIcon = '$';
@@ -50,7 +50,7 @@ const Cart: NextPage = () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className='w-full flex items-center justify-center p-4 md:p-16'>
+            <div className='w-full flex items-center justify-center lg:p-8 pt-10 lg:pt-16'>
                 {togglePopupState &&
                     <Popup
                         result={result}
@@ -59,10 +59,10 @@ const Cart: NextPage = () => {
                     />
                 }
                 <Container>
-                    <div className='w-full grid grid-cols-1 md:grid-cols-7 gap-12'>
-                        <div className='col-span-5'>
+                    <div className='w-full grid grid-cols-1 md:grid-cols-7 gap-8 xl:gap-12'>
+                        <div className='col-span-7 lg:col-span-5 md:col-span-4'>
                             <h1 className='text-4xl font-bold'>Shopping Cart</h1>
-                            <div className='w-full flex items-center justify-between border-b mt-8 font-medium text-gray-900'>
+                            <div className='w-full flex items-center justify-between border-b mt-8 font-medium text-gray-900 py-2'>
                                 <div>Product</div>
                                 <div className='flex gap-8'>
                                     <span>Quantity</span>
@@ -82,8 +82,8 @@ const Cart: NextPage = () => {
                                 }
                             </div>
                         </div>
-                        <div className='col-span-7 md:col-span-2 w-full h-full'>
-                            <div className="sticky top-2 w-full h-full max-h-[50vh] bg-gradient-to-br from-blue-900 to-gray-900 rounded-ten p-6">
+                        <div className='col-span-7 lg:col-span-2 md:col-span-3 w-full h-full pt-4'>
+                            <div className="sticky top-2 w-full h-full max-h-[50vh] bg-gradient-to-br from-blue-900 to-gray-900 rounded-ten p-6 mt-16">
 
                                 <div className='h-full flex flex-col justify-between text-white text-base space-y-4'>
                                     <div className='border-b border-gray-500 pb-2'>
@@ -103,7 +103,9 @@ const Cart: NextPage = () => {
                                             <span className='font-semibold'>Total:</span>
                                             <span>{currencyIcon}{totalCartAmount}</span>
                                         </div>
-                                        <Button onclick={() => togglePopup(true)}>
+                                        <Button
+                                            disabled={!(totalCartAmount > 0)}
+                                            onclick={() => togglePopup(true)}>
                                             Checkout
                                         </Button>
                                     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SearchComponent() {
+const SearchComponent = (): JSX.Element => {
     return (
         <div className="w-full flex items-center">
             <div className="w-full">
@@ -10,12 +10,12 @@ export default function SearchComponent() {
                 >
                     <input
                         type="text"
-                        className="block w-full h-14 px-[29px] py-[19px] placeholder:text-xs text-gray-700 placeholder:text-pureGray bg-white rounded-l-[10px] focus:outline-none"
+                        className="block w-full lg:h-14 px-7 py-3 lg:py-5 placeholder:text-xs text-gray-700 placeholder:text-pureGray bg-white rounded-l-ten focus:outline-none"
                         placeholder="Search food you love"
                     />
                     <button
                         type="submit"
-                        className="px-5 h-14 text-white bg-yellow border-l rounded-r-ten"
+                        className="px-5 lg:h-14 text-white bg-yellow border-l rounded-r-ten"
                     >
                         Search
                     </button>
@@ -24,3 +24,4 @@ export default function SearchComponent() {
         </div>
     );
 }
+export default SearchComponent;

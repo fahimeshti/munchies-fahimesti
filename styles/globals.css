@@ -1,21 +1,28 @@
 @tailwind base;
 @tailwind components;
-
-@font-face {
-    font-family: 'SF Pro Text';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-        url('../public/fonts/SFProDisplay_Regular.woff2') format('woff2'),
-        url('../public/fonts/SFProDisplay_Regular.woff') format('woff');
-}
-
 @tailwind utilities;
 
+@layer base {
+    @font-face {
+        font-family: 'SF Pro Text';
+        src: local(''),
+            url('../public/fonts/SFProDisplay_Regular.woff2') format('woff2');
+        font-weight: normal;
+        font-display: swap;
+        font-style: normal;
+    }
 
+    @font-face {
+        font-family: 'Gilroy-Medium';
+        src: local(''),
+            url('../public/fonts/Gilroy-Medium.woff2') format('woff2');
+        font-weight: normal;
+        font-display: swap;
+        font-style: normal;
+    }
+}
 
-/* just some animation  */
-
+/* little animation after order confirmation */
 .path {
     stroke-dasharray: 1000;
     stroke-dashoffset: 0;

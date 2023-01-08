@@ -15,6 +15,7 @@ module.exports = {
       },
       fontFamily: {
         'sfPro': ['SF Pro Text', 'sans-serif'],
+        'gilroy-medium': ['Gilroy-Medium', 'sans-serif'],
       },
       borderRadius: {
         "ten": "10px"

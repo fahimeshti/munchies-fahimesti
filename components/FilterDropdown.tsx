@@ -5,11 +5,11 @@ function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function FilterDropdown() {
+const FilterDropdown = (): JSX.Element => {
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>
-                <Menu.Button className="w-[15rem] inline-flex justify-between rounded-ten border border-gray-400 bg-white px-5 py-3 text-sm font-medium text-pureGray shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-yellow focus:ring-offset-2 focus:ring-offset-gray-100">
+                <Menu.Button className="w-[15rem] inline-flex justify-between rounded-ten border border-gray-400 bg-white px-5 py-2.5 lg:py-3 text-sm font-medium text-pureGray shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-yellow focus:ring-offset-2 focus:ring-offset-gray-100">
                     <span>Filters</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="-mr-1 ml-2 h-5 w-5">
                         <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clipRule="evenodd" />
@@ -59,3 +59,4 @@ export default function FilterDropdown() {
         </Menu>
     )
 }
+export default FilterDropdown;

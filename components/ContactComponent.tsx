@@ -3,11 +3,11 @@ import Container from './Container';
 import Heading from './Heading';
 import Image from 'next/image';
 
-function ContactComponent() {
+const ContactComponent = (): JSX.Element => {
     return (
-        <div className='bg-mediumGray w-full flex items-center justify-center py-24'>
+        <div className='bg-mediumGray w-full flex items-center justify-center py-6 md:py-10 lg:py-24'>
             <Container>
-                <div className="grid grid-cols-2 grid-rows-1 gap-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-1 gap-16">
                     <div className='row-span-1'>
                         <div className='max-w-sm space-y-1 '>
                             <Heading>

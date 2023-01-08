@@ -23,13 +23,14 @@ const Popup = ({ togglePopup, checkoutHandler, result }: Popup): JSX.Element => 
         // send user data to parent
         checkoutHandler({ name, phone, address });
     }
+    console.log(result);
 
     return (
-        <div className='fixed top-0 left-0 w-screen h-screen bg-[#000000b7] z-[9999] flex items-center justify-center'>
-            <div className='w-[38vw] bg-white p-12 rounded-ten'>
-                {!result?.isSuccess ?
+        <div className='fixed top-0 left-0 w-screen h-screen bg-[#000000b7] z-[9999] flex items-center justify-center p-4'>
+            <div className='w-full md:w-[40vw] bg-white px-12 py-8 rounded-ten'>
+                {!(result?.isSuccess) ?
                     <div>
-                        <h2 className='text-2xl text-center text-gray-800 font-bold tracking-wide mb-4'>Please enter your info.</h2>
+                        <h2 className='text-2xl lg:text-3xl text-center text-gray-800 font-bold tracking-wide mb-4'>Please enter your info.</h2>
                         <form
                             className='space-y-2'
                             onSubmit={handleUserInput}
@@ -39,12 +40,14 @@ const Popup = ({ togglePopup, checkoutHandler, result }: Popup): JSX.Element => 
                                 name='name'
                                 placeholder='Name'
                                 className='w-full text-sm px-3 py-2 border focus:ring-1 focus:ring-green focus:outline-none rounded-md'
+                                required
                             />
                             <input
                                 type="number"
                                 name='phone'
                                 placeholder='Phone'
                                 className='w-full text-sm px-3 py-2 border focus:ring-1 focus:ring-green focus:outline-none rounded-md'
+                                required
                             />
                             <textarea
                                 name="address"
@@ -52,12 +55,13 @@ const Popup = ({ togglePopup, checkoutHandler, result }: Popup): JSX.Element => 
                                 rows={5}
                                 className='w-full text-sm px-3 py-2 border focus:ring-1 focus:ring-green focus:outline-none rounded-md resize-none'
                                 placeholder="Address"
+                                required
                             />
                             <div className='flex gap-4'>
                                 <button
                                     disabled={result?.isLoading}
                                     onClick={() => togglePopup(false)}
-                                    className='w-full py-2.5 bg-white text-gray-500 mt-8 rounded-3xl border-2 border-gray-500
+                                    className='w-full py-2.5 bg-white text-gray-500 mt-4 rounded-3xl border-2 border-gray-500
                          hover:text-white hover:bg-gray-500 transition duration-150 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:text-gray-500 disabled:border-gray-400'
                                 >
                                     Cancel
@@ -70,6 +74,9 @@ const Popup = ({ togglePopup, checkoutHandler, result }: Popup): JSX.Element => 
                                 </Button>
                             </div>
                         </form>
+                        {result?.isError &&
+                            <p className='text-base font-medium text-red-600 text-center my-2'>Something went wrong! Please try again.</p>
+                        }
                     </div>
                     :
                     <div className='flex flex-col items-center justify-center gap-2 text-xl'>

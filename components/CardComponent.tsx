@@ -1,16 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '../slices/cartSlice';
-import { RootState } from '../store';
 import { TApiAllProductsResponse } from '../types';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 
-function CardComponent({ item }: { item: TApiAllProductsResponse }) {
-    const [success, setSuccess] = useState<boolean>(false)
-    const [error, setError] = useState<boolean>(false)
-    const dispatch = useDispatch();
-    const products = useSelector((state: RootState) => state.cart.products);
+const CardComponent = ({ item }: { item: TApiAllProductsResponse }): JSX.Element => {
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
+    const dispatch = useAppDispatch();
+    const products = useAppSelector((state) => state.cart.products);
 
 
     const clickHandler = () => {
@@ -29,23 +28,30 @@ function CardComponent({ item }: { item: TApiAllProductsResponse }) {
             setTimeout(() => {
                 setSuccess(false)
                 setError(false)
-            }, 1500);
+            }, 3000);
         }
     }, [success, error])
 
 
     return (
-        <div className='bg-white w-[277px] rounded-ten overflow-hidden'>
+        <div className='bg-white rounded-ten overflow-hidden'>
             {(success || error) &&
-                <div className={`${error ? "bg-red-500" : "bg-green"} fixed bottom-10 right-10 text-white px-4 py-3 rounded-ten`}>
+                <div className={`${error ? "bg-red-500" : "bg-green"} fixed bottom-10 right-10 text-white px-6 py-3.5 rounded-ten z-50`}>
                     {error ?
                         <span>Max item reached, please select another item</span>
                         :
-                        <div className='flex gap-2 items-center'>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="inline w-5 h-5">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            Added to cart
+                        <div>
+                            <div className='flex gap-2 items-center'>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="inline w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Added to
+                                <Link href='/cart'>
+                                    <span className='text-blue-700'>
+                                        cart
+                                    </span>
+                                </Link>
+                            </div>
                         </div>
                     }
                 </div>
@@ -55,8 +61,9 @@ function CardComponent({ item }: { item: TApiAllProductsResponse }) {
                     <Image
                         src={item?.image}
                         fill
-                        alt={item?.name}
-                    // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        alt={`${item?.name}-image not available`}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className='transition duration-200 hover:scale-105 cursor-pointer'
                     />
                     <span className='absolute top-0 left-0 p-1 text-xs bg-yellow'>50%</span>
                 </picture>

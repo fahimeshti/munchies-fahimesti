@@ -4,11 +4,11 @@ import React from 'react'
 import Container from './Container';
 import NavigationLinks from './NavigationLinks';
 
-function Footer() {
+const Footer = (): JSX.Element => {
     return (
-        <div className='bg-green text-white w-full flex items-center justify-center py-12'>
+        <div className='bg-green text-white w-full flex items-center justify-center py-6 md:py-10 lg:py-12'>
             <Container>
-                <div className='flex flex-row items-center justify-between'>
+                <div className='flex flex-col sm:flex-row items-center justify-between gap-4'>
                     <div className='w-32 h-12'>
                         <figure className={`relative w-full h-full object-contain`}>
                             <Image

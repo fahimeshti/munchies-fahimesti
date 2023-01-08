@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { productApi } from './slices/apiSlice';
-import cartReducer from './slices/cartSlice';
+import { productApi } from '../slices/apiSlice';
+import cartReducer from '../slices/cartSlice';
 
-const store = configureStore({
+export const store = configureStore({
     reducer: {
         cart: cartReducer,
         [productApi.reducerPath]: productApi.reducer,
@@ -12,4 +12,4 @@ const store = configureStore({
 })
 export type RootState = ReturnType<typeof store.getState>
 
-export default store;
+export type AppDispatch = typeof store.dispatch;

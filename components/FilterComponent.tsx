@@ -4,28 +4,31 @@ import CardComponent from './CardComponent';
 import Container from './Container';
 import FilterDropdown from './FilterDropdown';
 
+function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(' ')
+}
 
 const filterOptions = ['Button', 'Free delivary', 'New', 'coming'];
 
-function FilterComponent({ products }: { products: TApiAllProductsResponse[] }) {
+const FilterComponent = ({ products }: { products: TApiAllProductsResponse[] }): JSX.Element => {
 
     let active = true;
     return (
-        <div className='w-full flex items-center justify-center py-24 bg-mediumGray'>
+        <div className='w-full flex items-center justify-center py-6 md:py-10 lg:py-24 bg-mediumGray'>
             <Container>
                 <h2 className='text-2xl'>Home Kitchen</h2>
                 <div className='my-4'>
                     <div className='w-fit rounded-ten overflow-hidden'>
                         <button
-                            className={`${active ? "bg-yellow text-black font-semibold" : "bg-white text-pureGray"} px-10 py-3 border-b border rounded-l-ten border-yellow border-r-0 hover:bg-yellow hover:text-black transition duration-150`}
+                            className={classNames(active ? "bg-yellow text-black font-semibold" : "bg-white text-pureGray", "px-10 py-2.5 lg:py-3 border-b border rounded-l-ten border-yellow border-r-0 hover:bg-yellow hover:text-black transition duration-150")}
                         >
                             All
                         </button>
                         {
                             filterOptions.map((item, idx) => (
                                 <button
-                                    className={`${!active ? "bg-yellow text-black font-semibold" : "bg-white text-pureGray"} px-10 py-3 border border-yellow last:rounded-r-ten border-r-0 last:border-r border-b hover:bg-yellow hover:text-black transition duration-150`}
                                     key={idx}
+                                    className={classNames(!active ? "bg-yellow text-black font-semibold" : "bg-white text-pureGray", "px-10 py-2.5 lg:py-3 border border-yellow last:rounded-r-ten border-r-0 last:border-r border-b hover:bg-yellow hover:text-black transition duration-150")}
                                 >
                                     {item}
                                 </button>
@@ -35,7 +38,7 @@ function FilterComponent({ products }: { products: TApiAllProductsResponse[] }) 
                 </div>
                 <FilterDropdown />
                 <section>
-                    <div className='my-7 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+                    <div className='my-7 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 md:gap-6'>
                         {products?.map(item => (
                             <CardComponent key={item?.id} item={item} />
                         ))}
