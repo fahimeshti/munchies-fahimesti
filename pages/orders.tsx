@@ -72,13 +72,10 @@ const Orders: NextPage = () => {
                             </tbody>
                         </table>
 
-                        {error && <p className='text-center p-2'>Something went wrong!</p>}
-                        {isLoading && <p className='text-center p-4'>Loading...</p>}
+                        {error ? <p className='text-center p-2'>Something went wrong!</p> : null}
+                        {isLoading ? <p className='text-center p-4'>Loading...</p> : null}
                         {ordersData && !(ordersData?.length > 0) &&
-                            <p className='w-full text-center p-4 text-gray-500'>
-                                No orders
-                            </p>
-                        }
+                            <p className='w-full text-center p-4 text-gray-500'>No orders</p>}
                     </div>
                 </Container>
             </div>
