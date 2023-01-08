@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi } from '@reduxjs/toolkit/query/react'
 import type { BaseQueryFn } from '@reduxjs/toolkit/query'
 import { TApiAllProductsResponse, TOrderInfo } from '../types'
 import axios from 'axios'
@@ -42,18 +42,19 @@ export const productApi = createApi({
     endpoints(build) {
         return {
             getProducts: build.query<TApiAllProductsResponse[], void>({
-                query: () => ({ url: 'products/', method: 'GET' }),
+                query: () => ({
+                    url: 'products/',
+                    method: 'GET'
+                }),
             }),
             getOrders: build.query<TOrderInfo[], void>({
                 query: () => ({
-
                     url: `order/`,
                     method: 'GET',
                 }),
             }),
             addOrder: build.mutation<void, Partial<TOrderInfo>>({
                 query: (data) => ({
-
                     url: `order/`,
                     method: 'POST',
                     data,
@@ -63,4 +64,8 @@ export const productApi = createApi({
     },
 })
 
-export const { useGetProductsQuery, useGetOrdersQuery, useAddOrderMutation } = productApi
+export const {
+    useGetProductsQuery,
+    useGetOrdersQuery,
+    useAddOrderMutation,
+} = productApi
