@@ -43,6 +43,7 @@ const SearchBox = ({ products }: { products: TApiAllProductsResponse[] }): JSX.E
             {/* <Combobox.Label className="block text-sm font-medium text-gray-700">Assigned to</Combobox.Label> */}
             <div className="relative mt-1">
                 <Combobox.Input
+                    // @ts-ignore
                     ref={searchRef}
                     className="w-full rounded-md border border-gray-300 bg-white py-2.5 pl-3 pr-10 shadow-sm focus:border-green focus:outline-none focus:ring-2 focus:ring-green sm:text-sm placeholder:font-light"
                     onChange={filterHandler}
