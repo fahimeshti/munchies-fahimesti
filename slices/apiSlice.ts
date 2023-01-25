@@ -5,9 +5,9 @@ import axios from 'axios'
 import type { AxiosRequestConfig, AxiosError } from 'axios'
 
 // base url 
-const baseURL = 'https://munchies-api.up.railway.app/';
+const baseURL = 'https://munchies-fahimesti.vercel.app/api/';
 // setting x-access-user for all requests
-axios.defaults.headers.common['x-access-user'] = 'fahimesti@gmail.com';
+// axios.defaults.headers.common['x-access-user'] = 'fahimesti@gmail.com';
 
 const axiosBaseQuery = ({ baseUrl }: { baseUrl: string }): BaseQueryFn<
     {

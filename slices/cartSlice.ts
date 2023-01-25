@@ -6,13 +6,15 @@ const initialState: CartState = {
   quantity: 0,
   total: 0,
   totalVat: 0,
+  success: false,
+  error: false,
 }
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addProduct(state, action: PayloadAction<TApiAllProductsResponse>) {
+    addProduct(state: CartState, action: PayloadAction<TApiAllProductsResponse>) {
       const existingCartItemIndex = state.products.findIndex(product => product.id === action.payload.id)
       const existingCartItem = state.products[existingCartItemIndex]
       let updatedItems;
@@ -37,9 +39,16 @@ const cartSlice = createSlice({
       state.totalVat += action.payload.vat
       state.quantity += 1;
     },
+    successDispatch: (state: CartState, action: PayloadAction<boolean>) => {
+      state.success = action.payload;
+    },
+    errorDispatch: (state: CartState, action: PayloadAction<boolean>) => {
+      state.error = action.payload;
+    },
+    reset: () => initialState,
   },
 })
 
 const { actions, reducer } = cartSlice;
-export const { addProduct } = actions;
+export const { addProduct, errorDispatch, successDispatch, reset } = actions;
 export default reducer;

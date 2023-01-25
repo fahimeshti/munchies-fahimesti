@@ -1,61 +1,25 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
-import { addProduct } from '../slices/cartSlice';
+import { addProduct, errorDispatch, successDispatch } from '../slices/cartSlice';
 import { TApiAllProductsResponse } from '../types';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
+import maxQuantityError from './maxQuantityError';
 
 const CardComponent = ({ item }: { item: TApiAllProductsResponse }): JSX.Element => {
-    const [success, setSuccess] = useState(false);
-    const [error, setError] = useState(false);
     const dispatch = useAppDispatch();
     const products = useAppSelector((state) => state.cart.products);
 
-
     const clickHandler = () => {
-        dispatch(addProduct({ ...item, quantity: 1 }))
-        setSuccess(true)
-        const filteredProduct = products.filter(product => product.id === item.id);
-        let maxQuantityReached = false;
-        if (filteredProduct.length > 0) {
-            maxQuantityReached = filteredProduct[0]?.quantity === filteredProduct[0]?.quantity_available;
-        }
-        setError(maxQuantityReached)
+        dispatch(addProduct({ ...item, quantity: 1 }));
+        dispatch(successDispatch(true));
+        dispatch(errorDispatch(maxQuantityError(products, item)));
     }
-
-    useEffect(() => {
-        if (success) {
-            setTimeout(() => {
-                setSuccess(false)
-                setError(false)
-            }, 3000);
-        }
-    }, [success, error])
 
 
     return (
         <div className='bg-white rounded-ten overflow-hidden'>
-            {(success || error) &&
-                <div className={`${error ? "bg-red-500" : "bg-green"} fixed bottom-10 right-10 text-white px-6 py-3.5 rounded-ten z-50`}>
-                    {error ?
-                        <span>Max item reached, please select another item</span>
-                        :
-                        <div>
-                            <div className='flex gap-2 items-center'>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="inline w-5 h-5">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                Added to
-                                <Link href='/cart'>
-                                    <span className='text-blue-700'>
-                                        cart
-                                    </span>
-                                </Link>
-                            </div>
-                        </div>
-                    }
-                </div>
-            }
+
             <figure>
                 <picture className='block w-full h-64 relative object-contain'>
                     <Image

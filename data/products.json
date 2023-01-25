@@ -1,0 +1,193 @@
+[
+    {
+        "id": 1,
+        "name": "Biriyani",
+        "categories": [
+            "Free delivary"
+        ],
+        "price": 120,
+        "quantity_available": 3,
+        "image": "https://munchiesprod.s3.ap-southeast-1.amazonaws.com/f8624bf6-1ae8-48dc-8793-d4d071530489.png",
+        "vat": 5,
+        "addons": [
+            {
+                "id": 3,
+                "name": "Biriyani half",
+                "is_default": true,
+                "price": 120
+            },
+            {
+                "id": 9,
+                "name": "Biriyani full",
+                "price": 220
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Kacchi",
+        "categories": [
+            "New"
+        ],
+        "price": 220,
+        "quantity_available": 10,
+        "image": "https://munchiesprod.s3.amazonaws.com/79d8be05-4dc1-426a-83a1-e1ee87e1585c.jpeg",
+        "vat": 12,
+        "addons": [
+            {
+                "id": 4,
+                "name": "Kacchi half",
+                "is_default": true,
+                "price": 120
+            },
+            {
+                "id": 12,
+                "name": "Kacchi full",
+                "price": 220
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Pizza",
+        "categories": [
+            "Free delivary"
+        ],
+        "price": 250,
+        "quantity_available": 3,
+        "image": "https://api.lorem.space/image/pizza?w=500&h=500",
+        "vat": 12,
+        "addons": [
+            {
+                "id": 24,
+                "name": "Pizza 9 inch",
+                "is_default": true,
+                "price": 1200
+            },
+            {
+                "id": 120,
+                "name": "Pizza 12 inch",
+                "price": 1500
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Burger",
+        "categories": [
+            "upcoming"
+        ],
+        "price": 150,
+        "quantity_available": 12,
+        "image": "https://api.lorem.space/image/burger?w=500&h=500",
+        "vat": 12,
+        "addons": [
+            {
+                "id": 100,
+                "name": "Cheeze",
+                "is_default": true,
+                "price": 90
+            },
+            {
+                "id": 102,
+                "name": "Chicken patty",
+                "price": 150
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Pasta",
+        "categories": [
+            "New"
+        ],
+        "price": 290,
+        "quantity_available": 3,
+        "image": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGFzdGF8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+        "vat": 22,
+        "addons": [
+            {
+                "id": 2,
+                "name": "cheese",
+                "is_default": true,
+                "price": 100
+            },
+            {
+                "id": 9,
+                "name": "extra cheese",
+                "price": 200
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Raspberry Cake",
+        "categories": [
+            "New"
+        ],
+        "price": 250,
+        "quantity_available": 12,
+        "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+        "vat": 15,
+        "addons": [
+            {
+                "id": 2,
+                "name": "cream",
+                "is_default": true,
+                "price": 10
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "name": "French Toast",
+        "categories": [
+            "New"
+        ],
+        "price": 450,
+        "quantity_available": 8,
+        "image": "https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+        "vat": 25,
+        "addons": [
+            {
+                "id": 2,
+                "name": "honey",
+                "is_default": true,
+                "price": 10
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Italian Pasta",
+        "categories": [
+            "New"
+        ],
+        "price": 480,
+        "quantity_available": 10,
+        "image": "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+        "vat": 18
+    },
+    {
+        "id": 9,
+        "name": "Ramen",
+        "categories": [
+            "New"
+        ],
+        "price": 250,
+        "quantity_available": 10,
+        "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmFtZW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+        "vat": 10
+    },
+    {
+        "id": 10,
+        "name": "Avocado Salad",
+        "categories": [
+            "New"
+        ],
+        "price": 70,
+        "quantity_available": 20,
+        "image": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzV8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+        "vat": 5
+    }
+]

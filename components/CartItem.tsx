@@ -22,7 +22,7 @@ const CartItem = ({ product }: { product: TApiAllProductsResponse }): JSX.Elemen
             </div>
             <div className='flex gap-16'>
                 <span>{quantity}</span>
-                <span>${product.price}</span>
+                <span>${product.price * quantity!}</span>
                 <span>${product.vat * quantity!}</span>
             </div>
         </div>

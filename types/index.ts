@@ -1,15 +1,17 @@
 export type TApiAllProductsResponse = {
-    id: number;
+    id: number | string;
     name: string;
+    categories: string[];
     price: number;
     quantity_available: number;
     quantity?: number;
     image: string;
     vat: number;
-    addons: {
+    addons?: {
+        id: number | string;
         name: string;
-        is_default?: string;
-        price: string;
+        is_default?: boolean;
+        price: number;
     }[];
 };
 
@@ -18,6 +20,8 @@ export type CartState = {
     quantity: number;
     total: number;
     totalVat: number;
+    success: boolean;
+    error: boolean;
 }
 
 export type UserInfo = {

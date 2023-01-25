@@ -9,11 +9,14 @@ import Popup from '../components/Popup';
 import { RootState } from '../app/store';
 import { UserInfo } from '../types';
 import { useAddOrderMutation } from '../slices/apiSlice';
+import { useAppDispatch } from '../app/hooks';
+import { reset } from '../slices/cartSlice';
 
 const Cart: NextPage = () => {
     const [togglePopupState, setTogglePopupState] = useState(false);
     const [addOrder, result] = useAddOrderMutation();
     const cart = useSelector((state: RootState) => state.cart);
+    const dispatch = useAppDispatch();
     const products = cart.products;
     const currencyIcon = '$';
 
@@ -72,12 +75,21 @@ const Cart: NextPage = () => {
                             </div>
                             <div className='w-full'>
                                 {products.length > 0 ?
-                                    products.map(product => (
-                                        <CartItem
-                                            key={product.id}
-                                            product={product}
-                                        />
-                                    )) :
+                                    <div>
+                                        {products.map(product => (
+                                            <CartItem
+                                                key={product.id}
+                                                product={product}
+                                            />
+                                        ))}
+                                        <button
+                                            onClick={() => dispatch(reset())}
+                                            className='w-full text-sm text-center text-gray-500 hover:text-gray-700 mt-4'
+                                        >
+                                            Clear Cart
+                                        </button>
+                                    </div>
+                                    :
                                     <div className='w-full text-center text-gray-500 p-4'>Cart is empty</div>
                                 }
                             </div>

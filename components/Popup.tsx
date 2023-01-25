@@ -23,7 +23,6 @@ const Popup = ({ togglePopup, checkoutHandler, result }: Popup): JSX.Element => 
         // send user data to parent
         checkoutHandler({ name, phone, address });
     }
-    console.log(result);
 
     return (
         <div className='fixed top-0 left-0 w-screen h-screen bg-[#000000b7] z-[9999] flex items-center justify-center p-4'>

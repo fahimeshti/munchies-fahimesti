@@ -7,7 +7,7 @@ import Footer from '../components/Footer'
 import Topbar from '../components/Topbar'
 import { useGetProductsQuery } from '../slices/apiSlice'
 import { NextPage } from 'next'
-
+// import productsJson from '../data/products.json'
 
 const Home: NextPage = () => {
   const { data: products, error, isLoading } = useGetProductsQuery()
